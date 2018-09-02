@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tip Managment Tool</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+
+  <script language="JavaScript"  src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script language="JavaScript"  src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script language="JavaScript"  src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script language="JavaScript"  src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+  <script language="JavaScript"  src="node_modules/systemjs/dist/system.src.js"></script>
+  <script language="JavaScript"  src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script language="JavaScript"  src="node_modules/angular2/bundles/router.dev.js"></script>
+  <script language="JavaScript"  src="node_modules/rxjs/bundles/Rx.js"></script>
+
+  
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
+   <link href="app/components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="app/styles.css">
+    <script>
+      System.config({
+        packages: {        
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/main')
+            .then(null, console.error.bind(console));
+    </script>
+    
+</head>
+<body>
+  <my-app>
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>  
+  </my-app>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js" ></script>
+  <script src="app/components/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script src="http://connect.facebook.net/en_US/sdk.js"></script>
+  
+</body>
+</html>

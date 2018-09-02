@@ -1,0 +1,60 @@
+<div class="container">
+    <button type="button" (click)="createPaycheck()" class="btn btn-primary btn-lg btn-block">Create New Paycheck</button>
+    <div *ngFor="let paycheck of paychecks; let i = index" class="paycheck-panel" [ngClass]="{current: i==0}">    
+        <div class="row" >
+            <div (click)="deletePaycheck(i)" class="col-xs-12 glyphicon glyphicon-remove delete-paycheck-btn"></div>
+        </div>
+        <div class="row">
+            <div id="startDateGroup" class="col-xs-6">
+                <label for="startDate">Period Starts</label>
+                <div class="input-group">
+                    <span id="startDate" (click)="showDatePickerStartDate(i)" class="form-control"  >{{paycheck.formatedStartDate()}}</span>
+                </div>
+                 <div class="datepickerStartDate"></div>
+            </div>
+            <div id="endDateGroup" class="col-xs-6">
+                <label for="endDate">Period Ends</label>
+                <div class="input-group">
+                    <span id="endDate" (click)="showDatePickerEndDate(i)" class="form-control"  >{{paycheck.formatedEndDate()}}</span>
+                </div>
+                <div class="datepickerEndDate"></div>    
+            </div>
+        </div>
+        
+         
+        <table class="table table-condensed">
+            <tr> 
+                <th >EARNINGS</th>
+                <th >HOURS</th>
+                <th >AMOUNT</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td >HRLY</td>
+                    <td >{{paycheck.hrly}}</td>
+                    <td >{{paycheck.hrlyHours}}</td>
+                </tr>
+                <tr>
+                    <td >OT</td>
+                    <td >{{paycheck.overTimeHours}}</td>
+                    <td >{{paycheck.overTime}}</td>
+                </tr>
+                <tr>
+                    <td >Declared Tips</td>
+                    <td></td>
+                    <td >{{paycheck.declaredTips}}</td>
+                </tr>
+                <tr>
+                    <td >Paid Out Tips</td>
+                    <td></td>
+                    <td >{{paycheck.paidOutTips}}</td>
+                </tr>
+                <tr>
+                    <td >Tips Taken Home</td>
+                    <td></td>
+                    <td >{{paycheck.tipsTakenHome}}{{bonusAfterTipOut(paycheck)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

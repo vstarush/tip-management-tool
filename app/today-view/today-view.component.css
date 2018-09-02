@@ -1,0 +1,107 @@
+body {
+    overflow: initial;
+}
+
+#background {
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+    position: fixed;
+    background-size: contain;
+}
+
+.container {
+    padding-top: 70px;
+    max-width: 700px;
+}
+
+#currentDate {
+    text-align: center;
+}
+
+#datepicker {
+    position: absolute;
+    z-index: 10;
+    left: 55%;
+    margin-left: -100px;
+}
+
+.input-group, .btn-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-group span{
+    width: 33.33%;
+}
+
+.input-group,#currentDate {
+    width: 100%;
+}
+
+.data-input {
+    text-align: right;
+}
+
+.table-item-name > input {
+    text-align: center;
+    height: 20px;
+    width: 100%;
+    border: none;
+}
+
+.table-item-name {
+    text-align: center;
+    width: 30%;
+    margin: 0;
+    background-color: #eee;
+    vertical-align: middle;
+    border-color: #CCC;
+}
+
+.table-item-input {
+   background-color: #fff;
+   -webkit-box-shadow: inset -1px 1px 2px 0px rgba(204, 204, 204, 0.43);
+   box-shadow: inset -1px 1px 2px 0px rgba(204, 204, 204, 0.43);
+   border-right: none; 
+}
+
+.btn-save {
+    float: right;
+    margin-bottom: 20px;
+    min-width: 30%;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+    min-width: 100%;
+}
+
+.scrollable-menu li {
+    text-align: center;
+}
+
+.scrollable-menu li span {
+    color: lightgray;
+    font-size: x-small;
+    line-height: 12px;
+}
+
+.rawData {
+    font-size: small;
+    color: #CCC;
+}
+
+th {
+    background-color: #eee;
+}
+
+.center-btn {
+    border-right-width: 0px;
+}
+
+.table>tbody + tbody {
+    border-top-color: #ccc;
+}

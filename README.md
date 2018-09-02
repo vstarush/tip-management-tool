@@ -1,0 +1,1 @@
+Application Written Using AngularJS 2 and TypeScript

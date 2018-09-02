@@ -1,0 +1,27 @@
+  <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-profile-navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" [routerLink]="['Landing']">JMM</a>
+      <ul class="my-navbar">
+          <li ><a [routerLink]="['Today']">TODAY <span class="sr-only">(current)</span></a></li>
+          <li><a [routerLink]="['Dashboard']">DASHBOARD</a></li>
+        </ul>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="user-profile-navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><p class="navbar-text"><span class="glyphicon glyphicon-user"></span> {{user.name}}</p></li>
+          <li *ngIf="user.role==='admin'"><p class="navbar-text"><input type="checkbox" [(ngModel)]="appService.isAdmin" aria-label="...">   Admin</p></li>
+          <li><a class="navbar-text" href="/authorize/logout" ><span class="glyphicon glyphicon-log-out"></span> Logout <span class="sr-only">(current)</span></a></li>
+        </ul>
+        
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>

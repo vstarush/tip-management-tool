@@ -1,0 +1,28 @@
+.my-navbar {
+    display: inline-block;
+    padding-left: 0px;
+    float: left;
+    margin: 0;
+}
+.my-navbar li {
+    display: inline-block;
+    float: left;
+}
+.my-navbar li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #777;
+    padding: 15px;
+}
+.navbar-text {
+    padding-left: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.my-navbar li a.router-link-active {
+    background-color:#E7E7E7;
+}
+.my-navbar li a:hover {
+    text-decoration: none;
+    color: #333;
+}

@@ -1,0 +1,141 @@
+<div id="background"></div>
+<div class="container">
+    <div class="input-group">
+        <span class="input-group-addon data-title" id="basic-addon1">DATE</span>
+        <span id="currentDate" (click)="showDatePicker()" class="form-control"  >{{invoice.date}}</span>
+    </div>
+    <div id="datepicker"></div>
+    <div class="input-group">
+        <span class="input-group-addon data-title" >Net Deposit</span>
+        <input type="number" [(ngModel)]="invoice.netDeposit" (change)="update()" class="form-control data-input money" placeholder="$00.00" aria-describedby="basic-addon1" required>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon data-title" >Declared Tips</span>
+        <input type="number" [(ngModel)]="invoice.declaredTips" (change)="update()" class="form-control data-input money" placeholder="$00.00" aria-describedby="basic-addon1" required>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon data-title" >Labor Hours</span>
+        <input type="number" [(ngModel)]="invoice.laborHours" (change)="update()" class="form-control data-input time-hours" placeholder="0.0 Hours" aria-describedby="basic-addon1" required>
+    </div>
+    <div class="input-group" *ngIf="appService.isAdmin">
+        <span class="input-group-addon data-title" >Bonus</span>
+        <input type="number" [(ngModel)]="invoice.bonus" (change)="update()" class="form-control data-input money" placeholder="$00.00" aria-describedby="basic-addon1" required>
+    </div>
+    
+    
+    <br>
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <span class="input-group-addon" >BAR</span>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle center-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{partToPercent(invoice.bar.totalShare)}}% <span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><span>BAR SHARE</span></li>
+                    <li *ngFor="let part of partsOfTips; let i = index"><a (click)="setTotalBarShare(part)">{{partToPercent(part)}}%</a></li>
+                </ul>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{invoice.bar.numberOfWorkers}} pers <span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li *ngFor="let persons of personsOptions; let i = index"><a (click)="setTotalBarEmployeers(persons)">{{persons}} pers</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+         <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <span class="input-group-addon" >RUNNERS</span>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle center-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{partToPercent(invoice.foodRunners.totalShare)}}%  <span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><span>FOODRUNNERS <br/>SHARE</span></li>
+                    <li *ngFor="let part of partsOfTips; let i = index"><a (click)="setTotalFoodrunnersShare(part)">{{partToPercent(part)}}%</a></li>
+                </ul>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{invoice.foodRunners.numberOfWorkers}} pers <span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li *ngFor="let persons of personsOptions; let i = index"><a (click)="setTotalFoodrunnerEmployeers(persons)">{{persons}} pers</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <span class="input-group-addon" >KITCHEN</span>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle center-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{partToPercent(invoice.kitchen.totalShare)}}%  <span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li><span>KITCHEN SHARE</span></li>
+                    <li *ngFor="let part of partsOfTips; let i = index"><a (click)="setTotalKitchenShare(part)">{{partToPercent(part)}}%</a></li>
+                </ul>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{invoice.kitchen.numberOfWorkers}} pers <span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu">
+                    <li *ngFor="let persons of personsOptions; let i = index"><a (click)="setTotalKitchenEmployeers(persons)">{{persons}} pers</a></li>
+                </ul>
+            </div>
+        </div>
+<br>
+<table class="table table-bordered " *ngIf="invoice.bar.employeesList.length>0">
+    <caption> BAR </caption>
+    <tr> 
+        <th class="table-item-name">Name</th>
+        <th class="table-item-name">Hours</th>
+        <th class="table-item-name"><span class="glyphicon glyphicon-usd"></span></th>
+    </tr>
+    <tbody>
+        <tr *ngFor="let employee of invoice.bar.employeesList; let i = index">
+          <td class="table-item-name table-item-input"><input (change)="update()" [(ngModel)]="employee.name" type="text" placeholder="BAR {{i+1}}" /></td>
+          <td  class="table-item-name table-item-input"><input (change)="update()" [(ngModel)]="employee.hours" type="number" placeholder="0.0 Hours" /></td>
+          <td class="table-item-name">${{shareToUSDRounded(employee.tipsShare)}}</td>
+        </tr>
+      </tbody>
+</table>
+
+<table class="table table-bordered" *ngIf="invoice.foodRunners.employeesList.length>0">
+    <caption> FOODRUNNERS </caption>
+    <tr> 
+        <th class="table-item-name">Name</th>
+        <th class="table-item-name">Hours</th>
+        <th class="table-item-name"><span class="glyphicon glyphicon-usd"></span></th>
+    </tr>
+    <tbody>
+        <tr *ngFor="let employee of invoice.foodRunners.employeesList; let i = index">
+          <td class="table-item-name table-item-input"><input  (change)="update()" [(ngModel)]="employee.name" type="text" placeholder="RUNNER {{i+1}}" /></td>
+          <td  class="table-item-name table-item-input"><input (change)="update()" [(ngModel)]="employee.hours" type="number" placeholder="0.0 Hours" /></td>
+          <td class="table-item-name">${{shareToUSDRounded(employee.tipsShare)}}</td>
+        </tr>
+      </tbody>
+</table>
+
+<table class="table table-bordered " *ngIf="invoice.kitchen.employeesList.length>0">
+    <caption> KITCHEN </caption>
+    <tr> 
+        <th class="table-item-name">Name</th>
+        <th class="table-item-name">Hours</th>
+        <th class="table-item-name"><span class="glyphicon glyphicon-usd"></span></th>
+    </tr>
+    <tbody>
+        <tr *ngFor="let employee of invoice.kitchen.employeesList; let i = index">
+          <td  class="table-item-name table-item-input"><input (change)="update()" [(ngModel)]="employee.name" type="text" placeholder="KITCHEN {{i+1}}" /></td>
+          <td  class="table-item-name table-item-input"><input (change)="update()" [(ngModel)]="employee.hours" type="number" placeholder="0.0 Hours" /></td>
+          <td class="table-item-name">${{shareToUSDRounded(employee.tipsShare)}}</td>
+        </tr>
+      </tbody>
+</table>
+
+<table class="table">
+    <caption> SUMMARY </caption>
+    <tbody>
+        <tr>
+          <td class="">Total tip out</td>
+          <td class="data-input">{{formatedUSD(invoice.totalTipOut)}}</td>
+        </tr>
+        <tr>
+          <td class="">After tip out</td>
+          <td class="data-input">{{formatedUSD(invoice.afterTipOut)}}{{withBonusAfterTipOut()}}</td>
+        </tr>
+      </tbody>
+</table>
+
+<input class="btn btn-default btn-info btn-save" type="submit" value="SAVE" (click)="save()">

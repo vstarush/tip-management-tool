@@ -1,0 +1,64 @@
+.container {
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	z-index: 1;
+}
+
+@media screen and (min-width: 992px), screen and (min-aspect-ratio: 1/1) {
+    .container {
+		width: 60%;
+    }
+}
+
+#loginBackground {
+	position: fixed;
+	overflow:hidden;
+	width: 100%;
+	height: 100vh;
+	background: radial-gradient(rgba(1,1,1,0) 45%, black 95%),url("app/res/loginBackground2.jpg");
+	background-size: cover;
+	background-position: top center;
+	background-repeat: no-repeat;
+	z-index: -1; 
+}
+
+@media screen and (min-width: 992px), screen and (min-aspect-ratio: 1/1 ) {
+    #loginBackground {
+        background: radial-gradient(rgba(1,1,1,0) 5%, black 95%),url("app/res/loginBackground3.jpg");
+		background-size: cover;
+		background-position: top right;
+		background-repeat: no-repeat;
+		height: 100%;
+    }
+}
+
+#loginTitle {
+	font-weight: bold;
+	color: white;  
+	text-align: center;
+	bottom: 10%;
+	margin-bottom: 5%;
+	margin-top: 5%;
+	text-shadow: 2px 2px rgba(0,0,0,0.5);
+	font-size: 2em;
+}
+
+@media screen and (min-width: 992px) {
+    #loginTitle {
+        font-size: 3em;
+    }
+}
+
+#facebookLoginBtnContainer { 
+	position: absolute;
+    width: 100%;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+}
+
+#facebookLoginBtn:hover {
+	text-decoration: none;
+}

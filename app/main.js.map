@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+{"version":3,"file":"main.js","sourceRoot":"","sources":["main.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;YAQA,mBAAmB;YAEnB,mBAAS,CAAC,4BAAY,EAAC,CAAC,wBAAU,EAAC,qBAAc,CAAC,CAAC,CAAC"}
+=======
+{"version":3,"file":"main.js","sourceRoot":"","sources":["main.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;YAMA,mBAAmB;YAEnB,mBAAS,CAAC,4BAAY,EAAC,CAAC,wBAAU,CAAC,CAAC,CAAC"}
+>>>>>>> origin/master

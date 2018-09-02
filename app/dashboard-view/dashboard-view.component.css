@@ -1,0 +1,67 @@
+body {
+    overflow: initial;
+}
+
+label {
+    text-align: center;
+    width: 100%;
+}
+
+.table-condensed>tbody > tr > th {
+    border-top:none;
+    padding-top: 15px;
+}
+
+.container {
+    padding-top: 70px;
+    max-width: 600px;
+}
+
+.paycheck-panel {
+    background-color: #F5F5F5;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 15px;
+    box-shadow: 0px 0px 4px #ccc;
+}
+
+.delete-paycheck-btn {
+    color: #EC5A5A;
+    font-weight: bold;
+    text-align: right;
+    margin-top: -14px;
+    padding-right: 3px;
+    margin-bottom: -26px;
+    font-size: x-large;
+}
+
+.current {
+    background-color: #d9edf7;
+}
+
+.input-group {
+     width: 100%;
+}
+
+#startDateGroup {
+    float: left;
+}
+
+#endDateGroup {
+    float:left;
+}
+
+.datepickerStartDate,.datepickerEndDate {
+    position: absolute;
+    clear: both;
+}
+
+.datepickerEndDate {
+    right: 0;
+}
+
+#startDate,#endDate {
+    border-radius: 5px;
+    background-color: #F0F7FB;
+    width: 100%;
+}
